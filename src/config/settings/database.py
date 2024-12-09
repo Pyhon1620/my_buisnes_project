@@ -2,7 +2,7 @@ import os
 
 from django.conf import settings
 
-POSTGRES = True
+POSTGRES = False
 
 if POSTGRES:
     DATABASES = {
@@ -23,9 +23,19 @@ else:
         }
     }
 
-CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.redis.RedisCache',
-        'LOCATION': f'{settings.REDIS_PORT_URL}/2',
+REDIS = False
+
+if REDIS:
+    CACHES = {
+        'default': {
+            'BACKEND': 'django.core.cache.backends.redis.RedisCache',
+            'LOCATION': f'{settings.REDIS_PORT_URL}/2',
+        }
     }
-}
+else:
+    CACHES = {
+        'default': {
+            'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+            'LOCATION': 'my_cache_table',
+        }
+    }

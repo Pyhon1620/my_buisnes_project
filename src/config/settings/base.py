@@ -9,7 +9,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 SECRET_KEY = os.environ['SECRET_KEY']
 
-DEBUG = False
+DEBUG = True
 
 CORS_ALLOW_ALL_ORIGINS = True
 
@@ -28,7 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'rest_framework',
-    'corsheaders'
+    'corsheaders',
     'drf_yasg',
 ]
 
